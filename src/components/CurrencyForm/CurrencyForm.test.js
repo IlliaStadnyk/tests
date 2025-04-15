@@ -43,25 +43,20 @@ describe('Component CurrencyForm', () => {
         it(`should call action callback with correct data: ${testCase.amount} ${testCase.from} → ${testCase.to}`, () => {
             const action = jest.fn();
 
-            // Render komponentu
             render(<CurrencyForm action={action} />);
 
-            // Wyszukiwanie elementów
             const amountField = screen.getByTestId('amount');
             const fromField = screen.getByTestId('selectFrom');
             const toField = screen.getByTestId('selectTo');
             const submitButton = screen.getByText('Convert');
 
-            // Wypełnianie pól
             userEvent.clear(amountField);
             userEvent.type(amountField, testCase.amount);
             userEvent.selectOptions(fromField, testCase.from);
             userEvent.selectOptions(toField, testCase.to);
 
-            // Kliknięcie przycisku
             userEvent.click(submitButton);
 
-            // Sprawdzenie wywołania akcji
             expect(action).toHaveBeenCalledTimes(1);
             expect(action).toHaveBeenCalledWith({
                 amount: parseFloat(testCase.amount),
@@ -69,7 +64,6 @@ describe('Component CurrencyForm', () => {
                 to: testCase.to,
             });
 
-            // Wyczyść po sobie!
             cleanup();
         });
     }
