@@ -1,4 +1,3 @@
-import {isString} from "yarn/lib/cli";
 
 export const convertPLNToUSD = (PLN) => {
 
