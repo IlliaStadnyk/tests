@@ -11,34 +11,8 @@ const testCases = [
 
 describe('Component CurrencyForm', () => {
     it('should renders without crashing', () => {
-        render(<CurrencyForm action={()=>{}}/>);
+        render(<CurrencyForm />);
     })
-    // it('should run action callback with proper data on form submit', () => {
-    //     const action = jest.fn();
-    //
-    //     // render component
-    //     render(<CurrencyForm action={action} />);
-    //
-    //     // find “convert” button
-    //     const submitButton = screen.getByText('Convert');
-    //
-    //     // find fields elems
-    //     const amountField = screen.getByTestId('amount');
-    //     const fromField = screen.getByTestId('selectFrom');
-    //     const toField = screen.getByTestId('selectTo');
-    //
-    //     // set test values to fields
-    //     userEvent.type(amountField, '100');
-    //     userEvent.selectOptions(fromField, 'PLN');
-    //     userEvent.selectOptions(toField, 'USD');
-    //
-    //     // simulate user click on "convert" button
-    //     userEvent.click(submitButton);
-    //
-    //     // check if action callback was called once and with proper argument
-    //     expect(action).toHaveBeenCalledTimes(1);
-    //     expect(action).toHaveBeenCalledWith({ amount: 100, from: 'PLN', to: 'USD' });
-    // });
     for (const testCase of testCases) {
         it(`should call action callback with correct data: ${testCase.amount} ${testCase.from} → ${testCase.to}`, () => {
             const action = jest.fn();
